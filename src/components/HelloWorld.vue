@@ -13,7 +13,7 @@ defineProps({
     <h3>
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Hola</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Hola2</a>.
+      <a href="https://vuejs.org/" target="_blank" rel="noopener">Hola4</a>.
     </h3>
   </div>
 </template>
