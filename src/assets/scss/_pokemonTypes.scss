@@ -1,0 +1,81 @@
+@use "mixins";
+
+.card-base{
+    align-self: auto;
+}
+
+.normal {
+    background-color: #F1C40F;
+}
+
+.fighting {
+    background-color: red;
+}
+
+.flying {
+    background-color: #3498DB;
+}
+
+.poison {
+    background-color: #EC407A;
+}
+
+.ground {
+    background-color: #FF5722;
+}
+
+.rock {
+    background-color: #FF8A65;
+}
+
+.bug {
+    background-color: #FFEB3B;
+}
+
+.ghost {
+    background-color: #6A1B9A;
+}
+
+.steel {
+    background-color: #0000;
+}
+
+.fire {
+    background-color: #F39C12;
+}
+
+.water {
+    background-color: #0D47A1;
+}
+
+.grass {
+    background-color: #2E7D32 ;
+}
+
+.electric {
+    background-color: #8D6E63;
+}
+
+.psychic {
+    background-color: #E91E63;
+}
+
+.ice {
+    background-color: #26A69A;
+}
+
+.dragon {
+    background-color: #CE93D8;
+}
+
+.dark {
+    background-color: #880E4F;
+}
+
+.fairy {
+    background-color: #FF66CC;
+}
+
+.shadow {
+    background-color: #6A1B9A;
+}
