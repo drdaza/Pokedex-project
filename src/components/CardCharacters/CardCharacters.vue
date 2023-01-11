@@ -24,5 +24,6 @@ const typePokemonCharacter = computed(()=> {
 </template>
 
 <style lang="scss" scoped>
+@use "../../assets/scss/pokemonTypes";
 
 </style>
