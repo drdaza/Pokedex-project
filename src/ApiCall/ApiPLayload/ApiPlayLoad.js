@@ -2,11 +2,13 @@ export default class ApiPlayLoad{
     Name;
     Image;
     Id;
+    Type;
 
-    constructor(name, image, id){
+    constructor(name, image, id, type){
         this.Name = name;
         this.Image = image;
         this.Id = id;
+        this.Type = type;
     }
     setName(name){
         this.Name = name;
@@ -17,6 +19,9 @@ export default class ApiPlayLoad{
     setId(id){
         this.Id = id;
     }
+    setType(type){
+        this.Type = type;
+    }
     get Name(){
         return this.Name;
     }
@@ -25,5 +30,8 @@ export default class ApiPlayLoad{
     }
     get Id(){
         return this.Id;
+    }
+    get Type(){
+        return this.Type;
     }
 }
