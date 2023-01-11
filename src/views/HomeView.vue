@@ -1,6 +1,7 @@
 <script setup>
 import {characterStore} from '../stores/PrincipalStore.js';
 import { onBeforeMount } from 'vue';
+import CardCharacters from '../components/CardCharacters/CardCharacters.vue';
 
 const principalStore = characterStore();
 
@@ -12,9 +13,21 @@ onBeforeMount(()=>{
 
 <template>
   <main>
-    <div v-for="character of principalStore.Characters">
-      <img :src="character.Image" :alt="`Imagen de ${character.Name}`">
-      <h1>{{character.Name}}</h1>
+    <div class="card-space" v-for="character of principalStore.Characters">
+      <CardCharacters 
+        :character="character"
+      />
     </div>
   </main>
 </template>
+
+<style lang="scss" scoped >
+@use "../assets/scss/main" as *;
+ main{
+  @include FlexDisplay(row, center,space-evenly, 100%, auto);
+  flex-wrap: wrap;
+  .card-space{
+    width: 32%;
+  }
+ }
+</style>
