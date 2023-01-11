@@ -11,12 +11,15 @@ const typePokemonCharacter = computed(()=> {
     if(props.character.Type == undefined ) return;
     return props.character.Type;
 }) 
+function changeFirstLetterToUpperCase(word) {
+    return word.charAt(0).toUpperCase()+word.slice(1);
+}
 </script>
 
 <template>
     <div :class="['card-base', typePokemonCharacter]">  
         <img :src="character.Image" alt="">
-        <h1>{{ character.Name }}</h1>
+        <h1>{{ changeFirstLetterToUpperCase(character.Name) }}</h1>
         <div class="types-pokemon">
             <h3>{{ character.Type }}</h3>
         </div>

@@ -27,7 +27,9 @@ onBeforeMount(()=>{
   @include FlexDisplay(row, center,space-evenly, 100%, auto);
   flex-wrap: wrap;
   .card-space{
-    width: 32%;
+    width: 27%;
+    height: 40vh;
+    margin: 2%;
   }
  }
 </style>
