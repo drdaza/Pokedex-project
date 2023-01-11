@@ -1,0 +1,18 @@
+@use 'mixins' as *;
+$primary-color: #A37F60;
+$secondary-color: #635550;
+$terthiary-color: #B8BB9A;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    @include FlexDisplay(column, center, center, 100%, auto);
+    color:$primary-color;
+    background-color: $secondary-color;
+    font-family: sans-serif, 'Courier New', Courier, monospace;
+}
+#app{
+    @include FlexDisplay(column, normal, center, 100%, auto);
+}
