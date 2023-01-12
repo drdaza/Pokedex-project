@@ -6,6 +6,7 @@ import { computed, ref } from 'vue';
 
 const principalStore = characterStore();
 const filter = ref('');
+const search = ref('');
 
 onBeforeMount(()=>{
   principalStore.AsignCharacters();
@@ -13,24 +14,39 @@ onBeforeMount(()=>{
 const filterCategory = computed(()=>{
   let filterCharacters = [];
   if(filter.value == '' || filter.value == 'all') return principalStore.Characters;
+  if(filter.value == search.value){
+    for (const character of principalStore.Characters) {
+      if(character.Name == filter.value) filterCharacters.push(character);
+    }
+    return filterCharacters;
+  }
   for (const character of principalStore.Characters) {
     if(character.Type == filter.value) filterCharacters.push(character); 
   }
   return filterCharacters;
 
 })
+const searchCharacter = ()=>{
+  if(search.value == '') return;
+  for (const character of principalStore.Characters) {
+    if(character.Name == search.value) filter.value = search.value;
+  }
+}
 </script>
 
 <template>
   <main>
-    <div><select v-model="filter">
-      <option disabled value="">Please select one filter</option>
-      <option>all</option>
-      <option>bug</option>
-      <option>dragon</option>
-      <option>grass</option>
-
-    </select></div>
+    <div>
+      <input type="text" v-model="search">
+      <button @click="searchCharacter">search pokemon</button>
+      <select v-model="filter">
+        <option disabled value="">Please select one filter</option>
+        <option>all</option>
+        <option>bug</option>
+        <option>dragon</option>
+        <option>grass</option>
+      </select>
+  </div>
     <div class="card-space" v-for="character of filterCategory">
       <CardCharacters 
         :character="character"
