@@ -3,6 +3,7 @@ import {characterStore} from '../stores/PrincipalStore.js';
 import { onBeforeMount } from 'vue';
 import CardCharacters from '../components/CardCharacters/CardCharacters.vue';
 import { computed, ref } from 'vue';
+import SearchCharacter from '../components/SearchCharacter/SearchCharacter.vue';
 
 const principalStore = characterStore();
 const filter = ref('');
@@ -26,19 +27,23 @@ const filterCategory = computed(()=>{
   return filterCharacters;
 
 })
-const searchCharacter = ()=>{
-  if(search.value == '') return;
+const searchCharacter = (nameCharacter)=>{
+  if(nameCharacter == '') return;
   for (const character of principalStore.Characters) {
-    if(character.Name == search.value) filter.value = search.value;
+    if(character.Name == nameCharacter){ 
+      search.value = nameCharacter;
+      filter.value = search.value;
+    }
   }
 }
 </script>
 
 <template>
   <main>
-    <div>
-      <input type="text" v-model="search">
-      <button @click="searchCharacter">search pokemon</button>
+    <div class="filter-section">
+      <div>
+          <SearchCharacter @NameEmit="searchCharacter"/>
+      </div>
       <select v-model="filter">
         <option disabled value="">Please select one filter</option>
         <option>all</option>
@@ -62,22 +67,30 @@ const searchCharacter = ()=>{
         <option>fairy</option>
         <option>shadow</option>
         <option>unknown</option>
-
       </select>
   </div>
-    <div class="card-space" v-for="character of filterCategory">
-      <CardCharacters 
-        :character="character"
-      />
-    </div>
+    <section class="cards-section">
+      <div class="card-space" v-for="character of filterCategory">
+        <CardCharacters 
+          :character="character"
+        />
+      </div>
+    </section>
   </main>
 </template>
 
 <style lang="scss" scoped >
 @use "../assets/scss/main" as *;
  main{
-  @include FlexDisplay(row, center,space-evenly, 100%, auto);
-  flex-wrap: wrap;
+  @include FlexDisplay(column, space-evenly, center, 100%, auto);
+  
+  .filter-section{
+    @include FlexDisplay(row, space-evenly, center, 100%, auto);
+  }
+  .cards-section{
+    @include FlexDisplay(row, space-evenly,center, 100%, auto);
+    flex-wrap: wrap;
+  }
   .card-space{
     width: 27%;
     height: 40vh;

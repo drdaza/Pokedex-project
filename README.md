@@ -1,19 +1,40 @@
 # Pikachu-Project
 
-This template should help get you started developing with Vue 3 in Vite.
+## Project Context
 
-## Recommended IDE Setup
+El consumo de APIs es una de las tareas mas usuales en el trabajo como desarrollador web frontend, afortunadamente existen una gran variedad de APIs abiertas para poder aprender a consumirlas, en este ejercicio pedagógico vamos a realizar uno de los ejercicios más populares que se pueden encontrar en linea que es hacer una pokedex
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+​
 
-## Customize configuration
+Requisitos mínimos:
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+* Cards con los pokemons (fundo de la card según tipo de pokemon)
+* Detalles del pokemon
+* Filtro por categorias
+* Buscador
+​
+
+Extra:
+
+* Mini juego -> adivina quien es
+
+​
+
+Obligatorio:
+
+* Se debe trabajar haciendo uso de pull-request de github
+
+## Technologies
+
+* Vue 3 
+* Sass
+* Vistest
 
 ## Project Setup
 
 ```sh
 npm install
+npm instal -D sass
 ```
 
 ### Compile and Hot-Reload for Development
@@ -33,3 +54,8 @@ npm run build
 ```sh
 npm run test:unit
 ```
+### Developers Team
+
+* Natalia Calvo
+* Vitoria Oliveira
+* David Daza
