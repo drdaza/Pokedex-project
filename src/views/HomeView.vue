@@ -4,6 +4,7 @@ import { onBeforeMount } from 'vue';
 import CardCharacters from '../components/CardCharacters/CardCharacters.vue';
 import { computed, ref } from 'vue';
 import SearchCharacter from '../components/SearchCharacter/SearchCharacter.vue';
+import FilterCharacters from '../components/_FilterCharacters/FilterCharacters.vue';
 
 const principalStore = characterStore();
 const filter = ref('');
@@ -36,6 +37,10 @@ const searchCharacter = (nameCharacter)=>{
     }
   }
 }
+const changeFilterValue =(typeemit)=> {
+  filter.value = typeemit;
+  console.log(typeemit);
+}
 </script>
 
 <template>
@@ -44,30 +49,7 @@ const searchCharacter = (nameCharacter)=>{
       <div>
           <SearchCharacter @NameEmit="searchCharacter"/>
       </div>
-      <select v-model="filter">
-        <option disabled value="">Please select one filter</option>
-        <option>all</option>
-        <option>bug</option>
-        <option>dragon</option>
-        <option>grass</option>
-        <option>fire</option>
-        <option>water</option>
-        <option>normal</option>
-        <option>poison</option>
-        <option>electric</option>
-        <option>fighting</option>
-        <option>flying</option>
-        <option>ground</option>
-        <option>rock</option>
-        <option>ghost</option>
-        <option>steel</option>
-        <option>psychic</option>
-        <option>ice</option>
-        <option>dark</option>
-        <option>fairy</option>
-        <option>shadow</option>
-        <option>unknown</option>
-      </select>
+    <FilterCharacters @FilterEmit="changeFilterValue"/>
   </div>
     <section class="cards-section">
       <div class="card-space" v-for="character of filterCategory">
