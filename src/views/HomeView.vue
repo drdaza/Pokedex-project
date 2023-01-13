@@ -45,6 +45,24 @@ const searchCharacter = ()=>{
         <option>bug</option>
         <option>dragon</option>
         <option>grass</option>
+        <option>fire</option>
+        <option>water</option>
+        <option>normal</option>
+        <option>poison</option>
+        <option>electric</option>
+        <option>fighting</option>
+        <option>flying</option>
+        <option>ground</option>
+        <option>rock</option>
+        <option>ghost</option>
+        <option>steel</option>
+        <option>psychic</option>
+        <option>ice</option>
+        <option>dark</option>
+        <option>fairy</option>
+        <option>shadow</option>
+        <option>unknown</option>
+
       </select>
   </div>
     <div class="card-space" v-for="character of filterCategory">
