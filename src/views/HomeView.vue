@@ -67,7 +67,6 @@ const searchCharacter = (nameCharacter)=>{
         <option>fairy</option>
         <option>shadow</option>
         <option>unknown</option>
-
       </select>
   </div>
     <section class="cards-section">
