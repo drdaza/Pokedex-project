@@ -5,6 +5,7 @@ import CardCharacters from '../components/CardCharacters/CardCharacters.vue';
 import { computed, ref } from 'vue';
 import SearchCharacter from '../components/SearchCharacter/SearchCharacter.vue';
 import FilterCharacters from '../components/_FilterCharacters/FilterCharacters.vue';
+import { RouterLink, RouterView } from 'vue-router'
 
 const principalStore = characterStore();
 const filter = ref('');
@@ -23,7 +24,10 @@ const filterCategory = computed(()=>{
     return filterCharacters;
   }
   for (const character of principalStore.Characters) {
-    if(character.Type == filter.value) filterCharacters.push(character); 
+    for (const type of character.Type) {
+      if(type.type.name == filter.value) filterCharacters.push(character); 
+    }
+    
   }
   return filterCharacters;
 
@@ -39,7 +43,7 @@ const searchCharacter = (nameCharacter)=>{
 }
 const changeFilterValue =(typeemit)=> {
   filter.value = typeemit;
-  console.log(typeemit);
+
 }
 </script>
 
@@ -53,9 +57,11 @@ const changeFilterValue =(typeemit)=> {
   </div>
     <section class="cards-section">
       <div class="card-space" v-for="character of filterCategory">
+        <router-link :to="{ name: 'Details', props:{id: parseInt(character.Id)}, params: { id: character.Id}}" >
         <CardCharacters 
           :character="character"
         />
+        </router-link>
       </div>
     </section>
   </main>
@@ -77,6 +83,10 @@ const changeFilterValue =(typeemit)=> {
     width: 27%;
     height: 40vh;
     margin: 2%;
+    a{
+      text-decoration: none;
+      color: $primary-color;
+    }
   }
  }
 </style>

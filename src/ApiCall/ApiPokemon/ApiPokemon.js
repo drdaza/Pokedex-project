@@ -22,7 +22,7 @@ export default class ApiPokemon{
             charactersPure.push(characterJson);
         }
         for (const character of charactersPure) {
-            const characterToAdd = new ApiPlayLoad(character.name, character.sprites.front_default, character.id, character.types[0].type.name);
+            const characterToAdd = new ApiPlayLoad(character.name, character.sprites.front_default, character.id, character.types);
 
             charactersReturn.push(characterToAdd);
         }

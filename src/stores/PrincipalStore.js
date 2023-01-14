@@ -12,7 +12,7 @@ export const characterStore = defineStore({
             const Response = MyApiCall.chooseApi();
 
             this.Characters = await Response.getAll();
-            console.log(this.Characters);
+            
         },
         getChracterbyId(characterId){
             return this.Characters.find(item => item.id == characterId)
