@@ -6,8 +6,8 @@ import { RouterLink } from 'vue-router';
     <div id="Header">
     <img src="../assets/pokemon-title.png" alt="Title">
     <nav>
-      <router-link to="/pokemons">Home</router-link>
-      <router-link to="/pokemons/0/Details">Details</router-link>
+      <router-link to="/">Home</router-link>
+      <!-- <router-link to="/pokemons/0/Details">Details</router-link> -->
     </nav> 
     </div>
 </template>

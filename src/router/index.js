@@ -5,7 +5,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/pokemons',
+      path: '/',
       name: 'pokemons',
       component: PokemonsView
     },

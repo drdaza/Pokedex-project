@@ -1,11 +1,11 @@
 <script setup>
-import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { characterStore } from '../stores/PrincipalStore';
 import { computed } from 'vue';
 import CardCharacters from '../components/CardCharacters/CardCharacters.vue';
 import { onBeforeMount } from 'vue';
 const principalStore = characterStore();
-/* const route = useRoute();  */ 
+const router = useRouter();  
 /* const id = route.params.id; */
 
 const props = defineProps({
@@ -23,25 +23,50 @@ onBeforeMount(()=>{
 })
 
 const characterDetails = computed(()=>{
+    let characterFound = [];
     if(parseInt(props.id)===0){
+        const random = randomPokemon(1,152);
+        for (const character of principalStore.Characters) {
+            if(character.Id === random){
+            characterFound.push(character)
+            return characterFound;
+            }
+        }
         return principalStore.Characters;
     }
-    let characterFound = [];
+    
     for (const character of principalStore.Characters) {
         if(character.Id === parseInt(props.id)){
             characterFound.push(character)
             return characterFound;
         }
     }
-})
-
+});
+const goToNextPokemon = ()=>{
+    router.push({ name: 'Details', params: { id: parseInt(props.id) + 1 }, props:{id: parseInt(props.id) + 1} });
+}
+const goToBeforePokemon = ()=>{
+    router.push({ name: 'Details', params: { id: parseInt(props.id) - 1 }, props:{id: parseInt(props.id) - 1} });
+}
+const randomPokemon = (min, max)=>{
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 </script>
 <template>
     <main>
+        <div>
+            <button @click="goToBeforePokemon">anterior</button>
+            
+        </div>
         <div class="card-space" v-for="character of characterDetails">
             <CardCharacters 
             :type-card="'info-card'"
             :character="character" />
+        </div>
+        <div>
+            <button @click="goToNextPokemon">siguiente</button>
         </div>
     </main>
 </template>
