@@ -57,7 +57,7 @@ const changeFilterValue =(typeemit)=> {
   </div>
     <section class="cards-section">
       <div class="card-space" v-for="character of filterCategory">
-        <router-link :to="{ name: 'Details', props:{id: parseInt(character.Id)}, params: { id: character.Id}}" >
+        <router-link :to="{ name: 'Details', params: { id: character.Id}}" >
         <CardCharacters 
           :character="character"
         />

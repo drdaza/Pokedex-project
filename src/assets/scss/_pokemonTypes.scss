@@ -3,6 +3,10 @@
 .card-base{
     border-radius: 10px;
     @include FlexDisplay(column, space-evenly, center, 100%, 100%);
+    img{
+        width: 60%;
+        height: 70%;
+    }
 }
 
 .normal {
@@ -10,7 +14,7 @@
 }
 
 .fighting {
-    background-color: red;
+    background-color: #ff0000f5;
 }
 
 .flying {
@@ -30,7 +34,7 @@
 }
 
 .bug {
-    background-color: #FFEB3B;
+    background-color: #cbe635;
 }
 
 .ghost {

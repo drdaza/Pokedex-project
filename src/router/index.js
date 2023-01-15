@@ -21,7 +21,7 @@ const router = createRouter({
       path: "/pokemons/:id/Details",
       name: "Details",
       component: ()=> import('../views/DetailsView.vue'),
-      props: true
+      props: route => ({ id: parseInt(route.params.id) })
     },
   ]
 })

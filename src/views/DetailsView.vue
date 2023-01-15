@@ -1,16 +1,17 @@
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { characterStore } from '../stores/PrincipalStore';
 import { computed } from 'vue';
 import CardCharacters from '../components/CardCharacters/CardCharacters.vue';
 import { onBeforeMount } from 'vue';
 const principalStore = characterStore();
 const router = useRouter();  
+const route = useRoute();
 /* const id = route.params.id; */
 
 const props = defineProps({
     id:{
-        type: String,
+        type: Number,
         required: true
     }
 });
@@ -18,7 +19,7 @@ const props = defineProps({
 /* console.log(typeof(id)+ id); */
 
 onBeforeMount(()=>{
-    
+
   principalStore.AsignCharacters();
 })
 
@@ -43,16 +44,12 @@ const characterDetails = computed(()=>{
     }
 });
 const goToNextPokemon = ()=>{
-    router.push({ name: 'Details', params: { id: parseInt(props.id) + 1 }, props:{id: parseInt(props.id) + 1} });
+    router.push({ name: 'Details', params: { id: props.id + 1 }, props:{id: props.id + 1} });
 }
 const goToBeforePokemon = ()=>{
-    router.push({ name: 'Details', params: { id: parseInt(props.id) - 1 }, props:{id: parseInt(props.id) - 1} });
+    router.push({ name: 'Details', params: { id: props.id - 1 }, props:{id: props.id - 1} });
 }
-const randomPokemon = (min, max)=>{
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
+
 </script>
 <template>
     <main>
@@ -73,7 +70,7 @@ const randomPokemon = (min, max)=>{
 <style lang="scss" scoped>
 @use "../assets/scss/main" as *;
 main{
-    @include FlexDisplay(row, space-evenly, center, 100%, auto);
+    @include FlexDisplay(row, space-evenly, center, 100%, 100vh);
     .card-space{
         width: 80%;
         height: 40vh;

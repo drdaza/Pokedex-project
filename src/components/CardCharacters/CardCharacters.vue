@@ -31,8 +31,9 @@ function changeFirstLetterToUpperCase(word) {
         <img :src="character.Image" alt="">
         <h1>{{ changeFirstLetterToUpperCase(character.Name) }}</h1>
         <div class="types-pokemon">
-            <h3>{{ character.Type[0].type.name }}</h3>
-            <h3 v-if="character.Type.length > 1">{{ character.Type[1].type.name }}</h3>
+            <h3 :class="types.type.name" v-for="types of character.Type">
+                {{types.type.name}}
+            </h3>
         </div>
         <div v-if="changeTypeCard=='info-card'">i am a uper mega info card bro</div>
     </div>
