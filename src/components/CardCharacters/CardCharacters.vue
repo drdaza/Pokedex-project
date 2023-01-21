@@ -18,7 +18,7 @@ const typePokemonCharacter = computed(()=> {
 
 const changeTypeCard = computed(()=>{
     if(props.typeCard =='info-card') return 'info-card';
-    return;
+    return props.typeCard;
 }) 
 function changeFirstLetterToUpperCase(word) {
     return word.charAt(0).toUpperCase()+word.slice(1);
@@ -28,7 +28,7 @@ function changeFirstLetterToUpperCase(word) {
 
 <template>
     <div :class="['card-base', typePokemonCharacter, changeTypeCard]">  
-        <img :src="character.Image" alt="">
+        <img :class="[`img-${changeTypeCard}`]" :src="character.Image" alt="">
         <h1>{{ changeFirstLetterToUpperCase(character.Name) }}</h1>
         <div class="types-pokemon">
             <h3 :class="types.type.name" v-for="types of character.Type">
@@ -44,5 +44,13 @@ function changeFirstLetterToUpperCase(word) {
 @use '../../assets/scss/main' as *;
 .types-pokemon{
     @include FlexDisplay(row, space-evenly, center, 100%, auto);
+}
+.img-info-card{
+    width: 30%;
+    height: 50%;
+}
+.img-card-base{
+    width: 30%;
+    height: 40%;
 }
 </style>

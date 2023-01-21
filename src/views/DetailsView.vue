@@ -43,6 +43,14 @@ const characterDetails = computed(()=>{
         }
     }
 });
+const nextPokemon = computed(()=>{
+    for (const character of principalStore.Characters) {
+        if(character.Id==props.id+1){
+            return `${character.Name} N:${character.Id}`
+        }
+    }
+    return 
+})
 const goToNextPokemon = ()=>{
     router.push({ name: 'Details', params: { id: props.id + 1 }, props:{id: props.id + 1} });
 }
@@ -53,28 +61,68 @@ const goToBeforePokemon = ()=>{
 </script>
 <template>
     <main>
-        <div>
-            <button @click="goToBeforePokemon">anterior</button>
-            
+        <div class="navegation-buttons">
+            <div @click="goToBeforePokemon" class="left-button">
+                <h1>Anterior</h1>
+            </div>
+            <div class="rigth-button" @click="goToNextPokemon">
+                <h1>{{nextPokemon}}</h1>
+            </div>
         </div>
         <div class="card-space" v-for="character of characterDetails">
             <CardCharacters 
             :type-card="'info-card'"
             :character="character" />
         </div>
-        <div>
-            <button @click="goToNextPokemon">siguiente</button>
-        </div>
+        
     </main>
 </template>
 <style lang="scss" scoped>
 @use "../assets/scss/main" as *;
 main{
-    @include FlexDisplay(row, space-evenly, center, 100%, 100vh);
+    @include FlexDisplay(column, normal, center, 100%, auto);
     .card-space{
+        position: relative;
+        top: -20px;
         width: 80%;
-        height: 40vh;
-        margin: 2%;
+        height: 90vh;
+        margin-bottom: 2%;
+        
     }
+        .navegation-buttons {
+            @include FlexDisplay(row, space-between, center, 100%, 20vh);
+            
+    
+            .left-button {
+                @include FlexDisplay(row, space-evenly, center, 49.6%, 100%);
+                background-color: $terthiary-color;
+                position: relative;
+                top: 0;
+                z-index: 0;
+            }
+    
+            .rigth-button {
+                @include FlexDisplay(row, space-evenly, center, 49.6%, 100%);
+                background-color: $terthiary-color;
+                position: relative;
+                top: 0;
+                z-index: 0;
+    
+            }
+    
+            .left-button:hover {
+                transition: all 0.5s ease;
+                background-color: darkcyan;
+                cursor: pointer;
+            }
+    
+            .rigth-button:hover {
+                transition: all 0.5s ease;
+                background-color: darkcyan;
+                cursor: pointer;
+            }
+            
+        }
+    
 }
 </style>

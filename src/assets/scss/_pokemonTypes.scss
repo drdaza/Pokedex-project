@@ -3,10 +3,7 @@
 .card-base{
     border-radius: 10px;
     @include FlexDisplay(column, space-evenly, center, 100%, 100%);
-    img{
-        width: 60%;
-        height: 70%;
-    }
+    z-index: -1;
 }
 
 .normal {
