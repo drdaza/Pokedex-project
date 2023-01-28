@@ -51,6 +51,14 @@ const nextPokemon = computed(()=>{
     }
     return 
 })
+const anteriorPokemon = computed(()=>{
+    for (const character of principalStore.Characters) {
+        if(character.Id==props.id-1){
+            return `${character.Name} N:${character.Id}`
+        }
+    }
+    return 
+})
 const goToNextPokemon = ()=>{
     router.push({ name: 'Details', params: { id: props.id + 1 }, props:{id: props.id + 1} });
 }
@@ -63,10 +71,12 @@ const goToBeforePokemon = ()=>{
     <main>
         <div class="navegation-buttons">
             <div @click="goToBeforePokemon" class="left-button">
-                <h1>Anterior</h1>
+                <h1>{{anteriorPokemon}}</h1>
+                <div class="element"></div>
             </div>
             <div class="rigth-button" @click="goToNextPokemon">
                 <h1>{{nextPokemon}}</h1>
+                <div></div>
             </div>
         </div>
         <div class="card-space" v-for="character of characterDetails">
@@ -83,10 +93,10 @@ main{
     @include FlexDisplay(column, normal, center, 100%, auto);
     .card-space{
         position: relative;
-        top: -20px;
         width: 80%;
         height: 90vh;
         margin-bottom: 2%;
+        margin-top: 2%;
         
     }
         .navegation-buttons {
@@ -99,6 +109,7 @@ main{
                 position: relative;
                 top: 0;
                 z-index: 0;
+
             }
     
             .rigth-button {
@@ -107,18 +118,28 @@ main{
                 position: relative;
                 top: 0;
                 z-index: 0;
-    
+                border-bottom-left-radius: 50%;
+                div{
+                    width: 50%;
+                    height: 30%;
+                    position: absolute;
+                    left: 0;
+                    top: 70%;
+                    border-top-right-radius: 30px;
+                    background-color: $secondary-color;
+                }
+                
             }
     
             .left-button:hover {
                 transition: all 0.5s ease;
-                background-color: darkcyan;
+                background-color: #3398bf;
                 cursor: pointer;
             }
     
             .rigth-button:hover {
                 transition: all 0.5s ease;
-                background-color: darkcyan;
+                background-color: #3398bf;
                 cursor: pointer;
             }
             

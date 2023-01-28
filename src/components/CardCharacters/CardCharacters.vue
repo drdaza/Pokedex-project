@@ -27,9 +27,10 @@ function changeFirstLetterToUpperCase(word) {
 </script>
 
 <template>
-    <div :class="['card-base', typePokemonCharacter, changeTypeCard]">  
+    <div :class="['card-base', typePokemonCharacter, changeTypeCard]">
+        <h1>{{changeFirstLetterToUpperCase(character.Name) }}</h1>  
         <img :class="[`img-${changeTypeCard}`]" :src="character.Image" alt="">
-        <h1>{{ changeFirstLetterToUpperCase(character.Name) }}</h1>
+        
         <div class="types-pokemon">
             <h3 :class="types.type.name" v-for="types of character.Type">
                 {{types.type.name}}
@@ -52,5 +53,6 @@ function changeFirstLetterToUpperCase(word) {
 .img-card-base{
     width: 30%;
     height: 40%;
+    border: 1px solid;
 }
 </style>
